@@ -23,4 +23,6 @@ jobs:
         env:
           COLORME_CLIENT_ID: ${{ secrets.COLORME_CLIENT_ID }}
           COLORME_CLIENT_SECRET: ${{ secrets.COLORME_CLIENT_SECRET }}
-        run: colorme --version
+                run: |
+          colorme --version
+          colorme status
