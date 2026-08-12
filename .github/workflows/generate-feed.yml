@@ -1,0 +1,26 @@
+name: Generate Merchant Feed
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install ColorMe CLI
+        run: npm install -g @colorme/cli
+
+      - name: Check ColorMe CLI
+        env:
+          COLORME_CLIENT_ID: ${{ secrets.COLORME_CLIENT_ID }}
+          COLORME_CLIENT_SECRET: ${{ secrets.COLORME_CLIENT_SECRET }}
+        run: colorme --version
